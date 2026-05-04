@@ -1,11 +1,16 @@
-const { MercadoPagoConfig, Payment } = require('mercadopago');
+const express = require("express");
+const cors = require("cors");
+const { MercadoPagoConfig, Payment } = require("mercadopago");
+
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 const client = new MercadoPagoConfig({
-    APP_USR-fa7a2beb-7616-44dd-85b6-d685d2ecb259: process.env.TOKEN
+    accessToken: process.env.TOKEN
 });
 
 app.post("/pedido", async (req, res) => {
-
     try {
 
         const payment = new Payment(client);
@@ -16,7 +21,7 @@ app.post("/pedido", async (req, res) => {
                 description: "Pedido PERSONALIZE CABAL",
                 payment_method_id: "pix",
                 payer: {
-                    email: "pablo.lancabal@hotmail.com"
+                    email: "teste@teste.com"
                 }
             }
         });
@@ -24,8 +29,7 @@ app.post("/pedido", async (req, res) => {
         const dados = result.point_of_interaction.transaction_data;
 
         res.json({
-            qr_code: dados.qr_code,
-            qr_code_base64: dados.qr_code_base64
+            qr_code: dados.qr_code
         });
 
     } catch (error) {
@@ -33,3 +37,5 @@ app.post("/pedido", async (req, res) => {
         res.status(500).send("Erro ao gerar Pix");
     }
 });
+
+app.listen(3000, () => console.log("Servidor rodando"));
