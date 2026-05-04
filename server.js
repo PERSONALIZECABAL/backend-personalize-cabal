@@ -39,7 +39,7 @@ app.post("/pedido", async (req, res) => {
                         customer: {
                             name: "Cliente",
                             email: "cliente@email.com",
-                            tax_id: "12345678909"
+                            tax_id: "83784322034"
                         },
                         items: [
                             {
