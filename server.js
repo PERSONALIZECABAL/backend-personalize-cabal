@@ -1,7 +1,7 @@
 const mercadopago = require("mercadopago");
 
 mercadopago.configure({
-    access_token: process.env.TOKEN
+    APP_USR-fa7a2beb-7616-44dd-85b6-d685d2ecb259: process.env.TOKEN
 });
 
 app.post("/pedido", async (req, res) => {
