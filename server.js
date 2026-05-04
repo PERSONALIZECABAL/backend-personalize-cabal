@@ -15,7 +15,7 @@ app.post("/pedido", async (req, res) => {
             description: "Pedido PERSONALIZE CABAL",
             payment_method_id: "pix",
             payer: {
-                email: "cabalbelize@gmail.com"
+                email: "pablo.lancabal@hotmail.com"
             }
         });
 
